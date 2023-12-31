@@ -322,7 +322,6 @@ async def fetch_saved_game(sid, msg):
     try:
         data = json.loads(msg)
         gameID = data["id"]
-        print("GAME_ID: ", gameID, gameID in game_states);
         if (gameID in game_states):
             response = {"ok": True, "winner": game_states[gameID]["result"]}
             await sio.emit("fetch-saved-game", json.dumps(response), room=sid)
